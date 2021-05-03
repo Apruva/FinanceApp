@@ -1,8 +1,9 @@
 .App {
   display: block;
+  justify-content: center;
   text-align: center;
 }
 
 svg {
-  color: #3bf7cf;
+  color: #58eda7;
 }

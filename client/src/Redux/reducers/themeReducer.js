@@ -3,8 +3,8 @@ const initState = {
   palette: {
     type: 'light',
     primary: { main: '#404873' },
-    secondary: { main: '#7482cc' },
-    tertiary: { main: '#ffffff' },
+    secondary: { main: '#ffffff' },
+    tertiary: { main: '#7482cc' },
     fifthiary: { main: '#58eda7' },
   },
 };

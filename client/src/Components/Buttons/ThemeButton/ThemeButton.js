@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
+
 const ThemeButton = () => {
   const stateThemeMode = useSelector((state) => state.themeReducer.status);
   const dispatch = useDispatch();
 
   return (
     <Button
-      color='primary'
+      color='secondary'
       startIcon={stateThemeMode ? <Brightness2Icon /> : <WbSunnyIcon />}
       onClick={
         stateThemeMode
@@ -18,10 +19,10 @@ const ThemeButton = () => {
               dispatch(
                 themeAction({
                   type: 'dark',
-                  primary: { main: '#1f2422' },
-                  secondary: { main: '#3bf7cf' },
-                  tertiary: { main: '#ffffff' },
-                  fifthiary: { main: '#3bf7cf' },
+                  primary: { main: '#000000' },
+                  secondary: { main: '#ffffff' },
+                  tertiary: { main: '#3bf7cf' },
+                  fifthiary: { main: '#58eda7' },
                 })
               )
           : () =>
@@ -29,13 +30,15 @@ const ThemeButton = () => {
                 themeAction({
                   type: 'light',
                   primary: { main: '#404873' },
-                  secondary: { main: '#7482cc' },
-                  tertiary: { main: '#ffffff' },
+                  secondary: { main: '#ffffff' },
+                  tertiary: { main: '#7482cc' },
                   fifthiary: { main: '#58eda7' },
                 })
               )
       }
-    ></Button>
+    >
+      {stateThemeMode ? 'Dark' : 'Light'}
+    </Button>
   );
 };
 
