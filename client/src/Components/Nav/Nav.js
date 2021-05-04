@@ -6,12 +6,12 @@ import AuthButton from '../Auth0/AuthButton';
 import DashboardButton from '../Buttons/DashboardButton/DashboardButton';
 import HomeButton from '../Buttons/HomeButton/HomeButton';
 import ProfileButton from '../Buttons/ProfileButton/ProfileButton';
-
+import './Nav.css';
 const Nav = () => {
   const classes = useStyles();
   const { isAuthenticated } = useAuth0();
   return (
-    <AppBar position='static' maxWidth='xs'>
+    <AppBar position='static' className='AppBar'>
       <Toolbar>
         <Grid item xs={12} sm={6} className={classes.grid}>
           <HomeButton />

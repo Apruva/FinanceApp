@@ -22,7 +22,7 @@ const ThemeButton = () => {
                   primary: { main: '#000000' },
                   secondary: { main: '#ffffff' },
                   tertiary: { main: '#3bf7cf' },
-                  fifthiary: { main: '#58eda7' },
+                  fortiary: { main: '#363636' },
                 })
               )
           : () =>
@@ -32,7 +32,7 @@ const ThemeButton = () => {
                   primary: { main: '#404873' },
                   secondary: { main: '#ffffff' },
                   tertiary: { main: '#7482cc' },
-                  fifthiary: { main: '#58eda7' },
+                  fortiary: { main: '#6c6ead' },
                 })
               )
       }

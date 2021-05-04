@@ -9,6 +9,8 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import PageDontExist from './Components/PageDontExist/PageDontExist';
 import Landing from './Components/Landing/Landing';
 import Profile from './Components/Profile/Profile';
+
+import './App.css';
 function App() {
   const themeFromState = useSelector((state) => state.themeReducer);
   const theme = createMuiTheme(themeFromState);
@@ -16,7 +18,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Paper className='App' style={{ backgroundColor: 'primary' }}>
+      <Paper style={{ backgroundColor: theme.palette.primary.main }}>
         <Nav />
         <Switch>
           <Route path='/' exact component={Landing} />

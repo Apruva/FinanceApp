@@ -11,7 +11,7 @@ ReactDOM.render(
   <Router>
     <AuthProviderWithHistory>
       <Provider store={store}>
-        <App className='App.css' />
+        <App />
       </Provider>
     </AuthProviderWithHistory>
   </Router>,

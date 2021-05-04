@@ -5,11 +5,7 @@ import { useHistory } from 'react-router-dom';
 const HomeButton = () => {
   const history = useHistory();
   return (
-    <Button
-      color='secondary'
-      onClick={() => history.push('/')}
-      startIcon={<HomeIcon />}
-    ></Button>
+    <Button onClick={() => history.push('/')} startIcon={<HomeIcon />}></Button>
   );
 };
 export default HomeButton;
