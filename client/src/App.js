@@ -18,7 +18,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Paper style={{ backgroundColor: theme.palette.primary.main }}>
+      <div style={{ backgroundColor: theme.palette.primary.main }}>
         <Nav />
         <Switch>
           <Route path='/' exact component={Landing} />
@@ -27,7 +27,7 @@ function App() {
           <ProtectedRoute path='/profile' exact component={Profile} />
           <Route path='*' component={PageDontExist} />
         </Switch>
-      </Paper>
+      </div>
     </ThemeProvider>
   );
 }

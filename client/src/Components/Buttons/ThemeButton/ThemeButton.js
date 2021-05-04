@@ -23,6 +23,8 @@ const ThemeButton = () => {
                   secondary: { main: '#ffffff' },
                   tertiary: { main: '#3bf7cf' },
                   fortiary: { main: '#363636' },
+                  fifthiary: { main: '#292842' },
+                  background: { default: '#000000' },
                 })
               )
           : () =>
@@ -32,7 +34,9 @@ const ThemeButton = () => {
                   primary: { main: '#404873' },
                   secondary: { main: '#ffffff' },
                   tertiary: { main: '#7482cc' },
-                  fortiary: { main: '#6c6ead' },
+                  fortiary: { main: '#31348c' },
+                  fifthiary: { main: '#2b296e' },
+                  background: { default: '#404873' },
                 })
               )
       }

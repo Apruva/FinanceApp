@@ -5,8 +5,9 @@ const initState = {
     primary: { main: '#404873' },
     secondary: { main: '#ffffff' },
     tertiary: { main: '#7482cc' },
-    fortiary: { main: '#6c6ead' },
-    background: { paper: '#ffffff' },
+    fortiary: { main: '#31348c' },
+    fifthiary: { main: '#3b3991' },
+    background: { default: '#404873' },
   },
   typography: {
     fontFamily: 'Segoe UI',
