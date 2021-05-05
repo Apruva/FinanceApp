@@ -2,12 +2,13 @@ const initState = {
   status: true,
   palette: {
     type: 'light',
-    primary: { main: '#404873' },
+    primary: { main: '#393C75' },
     secondary: { main: '#ffffff' },
     tertiary: { main: '#7482cc' },
-    fortiary: { main: '#31348c' },
+    fortiary: { main: '#393C75' },
     fifthiary: { main: '#3b3991' },
-    background: { default: '#404873' },
+    sixthiary: { main: '#ffffff' },
+    background: { default: '#FFFFFF' },
   },
   typography: {
     fontFamily: 'Segoe UI',
@@ -25,6 +26,8 @@ const initState = {
   props: {
     MuiButton: {
       color: 'primary',
+      disableRipple: true,
+      textTransform: 'none',
     },
   },
   spacing: 5,

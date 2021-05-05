@@ -18,6 +18,7 @@ import LanguageOutlinedIcon from '@material-ui/icons/LanguageOutlined';
 import FingerprintOutlinedIcon from '@material-ui/icons/FingerprintOutlined';
 import UpdateOutlinedIcon from '@material-ui/icons/UpdateOutlined';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 import React from 'react';
 
 const Profile = () => {
@@ -27,93 +28,88 @@ const Profile = () => {
   const userDate = user.updated_at;
 
   const formatDate = new Date(userDate);
-
+  console.log(user);
   return (
     <Container className={classes.container}>
-      <Typography
-        variant='h3'
-        style={{
-          color: theme.palette.secondary.main,
-
-          marginTop: '2rem',
-          marginBottom: '3rem',
-        }}
-      >
+      <Typography className={classes.headline} variant='h3'>
         Account Details
       </Typography>
-      <Divider />
-      <Avatar className={classes.child} src={user.picture} />
-      <Typography
-        style={{
-          color: theme.palette.secondary.main,
-          fontWeight: 'bold',
-          marginBottom: '1rem',
-        }}
-      >
-        {user.email}
-      </Typography>
-      <Divider />
 
-      <Paper className={classes.paper}>
-        <List component='nav' aria-label='profile info'>
-          <ListItem>
-            <PersonOutlineOutlinedIcon />
-            <ListItemText className={classes.text}>
-              Family name: {user.family_name}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <PersonOutlineOutlinedIcon />
-            <ListItemText className={classes.text}>
-              Given name: {user.given_name}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <PersonOutlineOutlinedIcon />
-            <ListItemText className={classes.text}>
-              User name: {user.name}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <PersonOutlineOutlinedIcon />
-            <ListItemText className={classes.text}>
-              Nickname: {user.nickname}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <EmailOutlinedIcon />
-            <ListItemText className={classes.text}>{user.email} </ListItemText>
-          </ListItem>
-          <ListItem>
-            {user.email_verified ? (
-              <CheckOutlinedIcon />
-            ) : (
-              <CloseOutlinedIcon />
-            )}
-            <ListItemText className={classes.text}>
-              {user.email_verified ? 'Email verified' : 'Email not verified'}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <LanguageOutlinedIcon />
-            <ListItemText className={classes.text}>
-              {user.locale.toUpperCase()}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <FingerprintOutlinedIcon />
-            <ListItemText className={classes.text}>
-              {user.sub.toString().split('|')[0]}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <UpdateOutlinedIcon />
-            <ListItemText className={classes.text}>
-              {formatDate.toUTCString()}
-            </ListItemText>
-          </ListItem>
-        </List>
-      </Paper>
+      <Avatar className={classes.avatar} src={user.picture} />
+      <Typography className={classes.typography_small}>{user.email}</Typography>
+      <Divider />
+      <Container>
+        <Paper className={classes.paper}>
+          <List>
+            <ListItem>
+              <PersonOutlineOutlinedIcon />
+              <ListItemText className={classes.text}>
+                Given Name: <strong>{user.given_name}</strong>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <PersonOutlineOutlinedIcon />
+              <ListItemText className={classes.text}>
+                Family Name: <strong>{user.family_name}</strong>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <PersonOutlineOutlinedIcon />
+              <ListItemText className={classes.text}>
+                Name: <strong>{user.name}</strong>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <PersonOutlineOutlinedIcon />
+              <ListItemText className={classes.text}>
+                Nickname: <strong>{user.nick}</strong>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <EmailOutlinedIcon />
+              <ListItemText className={classes.text}>
+                Email: <strong>{user.email}</strong>
+              </ListItemText>
+            </ListItem>
+
+            <ListItem>
+              {user.email_verified ? (
+                <CheckOutlinedIcon />
+              ) : (
+                <CloseOutlinedIcon />
+              )}
+              <ListItemText className={classes.text}>
+                Email verified:
+                <strong>{user.email_verified.toString()}</strong>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <LanguageOutlinedIcon />
+              <ListItemText className={classes.text}>
+                Language: <strong>{user.locale}</strong>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <FingerprintOutlinedIcon />
+              <ListItemText className={classes.text}>
+                Authentication: <strong>{user.sub.split('|')[0]}</strong>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <ImageSearchIcon />
+              <ListItemText className={classes.text}>
+                Picture URL: <strong>{user.picture.toString()}</strong>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <UpdateOutlinedIcon />
+              <ListItemText className={classes.text}>
+                Updated: <strong>{formatDate.toString()}</strong>
+              </ListItemText>
+            </ListItem>
+          </List>
+        </Paper>
+      </Container>
     </Container>
   );
 };
@@ -124,25 +120,26 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
-    backgroundColor: theme.palette.primary.main,
-    marginBottom: '1rem',
-    width: '100%',
-    height: '100%',
-  },
-  child: {
-    alignSelf: 'center',
-    marginTop: '1rem',
-    marginBottom: '1rem',
-  },
-  paper: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: theme.palette.fortiary.main,
-    alignSelf: 'center',
-    marginTop: '1rem',
   },
   text: {
     color: theme.palette.secondary.main,
+  },
+  typography_small: {
+    marginTop: '2rem',
+    marginBottom: '2rem',
+  },
+  avatar: {
+    alignSelf: 'center',
+  },
+  headline: {
+    marginBottom: '2rem',
+  },
+  paper: {
+    marginTop: '2rem',
+    backgroundColor: theme.palette.primary.main,
+    width: 'fit-content',
+    margin: 'auto',
+    display: 'flex',
+    justifyContent: 'center',
   },
 }));

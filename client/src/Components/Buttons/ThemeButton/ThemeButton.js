@@ -19,24 +19,27 @@ const ThemeButton = () => {
               dispatch(
                 themeAction({
                   type: 'dark',
-                  primary: { main: '#000000' },
+                  primary: { main: '#1f202e' },
                   secondary: { main: '#ffffff' },
                   tertiary: { main: '#3bf7cf' },
                   fortiary: { main: '#363636' },
                   fifthiary: { main: '#292842' },
-                  background: { default: '#000000' },
+                  sixthiary: { main: '#000000' },
+
+                  background: { default: '#121212' },
                 })
               )
           : () =>
               dispatch(
                 themeAction({
                   type: 'light',
-                  primary: { main: '#404873' },
+                  primary: { main: '#393C75' },
                   secondary: { main: '#ffffff' },
                   tertiary: { main: '#7482cc' },
                   fortiary: { main: '#31348c' },
                   fifthiary: { main: '#2b296e' },
-                  background: { default: '#404873' },
+                  sixthiary: { main: '#ffffff' },
+                  background: { default: '#FFFFFF' },
                 })
               )
       }

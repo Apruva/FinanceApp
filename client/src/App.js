@@ -18,7 +18,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div style={{ backgroundColor: theme.palette.primary.main }}>
+      <div style={{ backgroundColor: theme.palette.background.default }}>
         <Nav />
         <Switch>
           <Route path='/' exact component={Landing} />

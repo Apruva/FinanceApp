@@ -15,7 +15,7 @@ const Nav = () => {
     <AppBar
       position='static'
       className='AppBar'
-      style={{ backgroundColor: theme.palette.fifthiary.main }}
+      style={{ backgroundColor: theme.palette.primary.main }}
     >
       <Toolbar>
         <Grid item xs={12} sm={6} className={classes.grid}>
