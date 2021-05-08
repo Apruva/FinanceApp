@@ -11,7 +11,7 @@ module.export = fetchHelseforetak = async () => {
   };
   const response = await fetch(url, options);
   const json = await response.json();
-  console.log(json);
+  return json;
 };
 
 module.export = fetchHelseregion = async () => {
@@ -25,7 +25,7 @@ module.export = fetchHelseregion = async () => {
   };
   const response = await fetch(url, options);
   const json = await response.json();
-  console.log(json);
+  return json;
 };
 
 module.export = fetchNasjonalt = async () => {
@@ -39,5 +39,5 @@ module.export = fetchNasjonalt = async () => {
   };
   const response = await fetch(url, options);
   const json = await response.json();
-  console.log(json);
+  return json;
 };
