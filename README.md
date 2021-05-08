@@ -1,1 +1,1 @@
-# Norwegian COVID Statistics app
+# In progress application that visualizes COVID data (norwegian specific).
