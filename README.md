@@ -1,1 +1,1 @@
-# FinanceApp
+# Norwegian COVID Statistics app
