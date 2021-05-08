@@ -14,6 +14,13 @@ app.use(express.json());
 app.use(helmet());
 app.use(rateLimit);
 
+const nasjonaltRoute = require('./Routes/nasjonaltRoute');
+app.use('/api/v1/nasjonalt', nasjonaltRoute);
+const helseregionRoute = require('./Routes/helseregionRoute');
+app.use('/api/v1/helseregion', helseregionRoute);
+const helseforetakRoute = require('./Routes/helseforetakRoute');
+app.use('/api/v1/helseforetak', helseforetakRoute);
+
 app.listen(process.env.DEV_PORT, function (err) {
   if (err) console.log(err);
   console.log('running server');
