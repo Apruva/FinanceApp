@@ -4,8 +4,10 @@ const helmet = require('helmet');
 const rateLimit = require('./Middleware/rateLimit');
 const cors = require('cors');
 const morgan = require('morgan');
+const databaseConnect = require('./Utils/databaseConnect');
 require('dotenv').config();
-//
+
+databaseConnect();
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
