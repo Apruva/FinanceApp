@@ -1,7 +1,7 @@
 # In progress application that visualizes Covid data (norwegian specific) 
 
 # Client:
-Authenticated with Open ID Connect/google and use the access-token to make API calls
+Authenticate with Open ID Connect/google and use the access-token to make API calls
 Visualzie the Covid data in graphs/tabels
 
 # Server: 
