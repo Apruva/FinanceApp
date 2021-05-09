@@ -5,14 +5,15 @@ const rateLimit = require('./Middleware/rateLimit');
 const cors = require('cors');
 const morgan = require('morgan');
 const databaseConnect = require('./Utils/databaseConnect');
-const jwt = require('express-jwt');
-const jwks = require('jwks-rsa');
+
 const helseregionRoute = require('./Routes/helseregionRoute');
 const nasjonaltRoute = require('./Routes/nasjonaltRoute');
 const helseforetakRoute = require('./Routes/helseforetakRoute');
 
 require('dotenv').config();
-
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa');
+app.get('/favicon.ico', (req, res) => res.status(204));
 databaseConnect();
 app.use(morgan('dev'));
 app.use(cors());
@@ -36,7 +37,12 @@ app.use(
 
 app.use((err, req, res, next) => {
   if (err) {
-    return res.json(err);
+    return res.status(err.status).json({
+      error: err.name,
+      message: err.message,
+      code: err.code,
+      status: err.status,
+    });
   }
   next();
 });

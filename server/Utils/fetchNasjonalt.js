@@ -1,9 +1,9 @@
 const fetch = require('node-fetch');
-
-module.export = fetchCovid = async (endpoint) => {
+const nasjonaltModel = require('../models/nasjonaltModel');
+const fetchNasjonalt = async () => {
   const baseUrl = process.env.URL_HELSEDIREKTORATET_BASE;
-  const _endpoint = endpoint;
-  const url = baseUrl + _endpoint;
+  const endpoint = process.env.HELSEDIREKTORATET_ENDPOINT_3;
+  const url = baseUrl + endpoint;
   const key = process.env.KEY;
   const options = {
     method: 'GET',
@@ -11,5 +11,7 @@ module.export = fetchCovid = async (endpoint) => {
   };
   const response = await fetch(url, options);
   const json = await response.json();
-  return json;
+  const update = new nasjonaltModel(json);
+  await update.save();
 };
+module.exports = fetchNasjonalt;
