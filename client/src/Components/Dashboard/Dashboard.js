@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Button,
   Paper,
@@ -10,9 +10,11 @@ import {
 
 const Dashboard = () => {
   // const classes = useStyles();
+
   return (
     <Container>
       <Typography variant='h3'>Dashboard</Typography>
+      <Paper></Paper>
     </Container>
   );
 };

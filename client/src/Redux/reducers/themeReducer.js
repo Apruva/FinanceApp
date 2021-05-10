@@ -12,22 +12,23 @@ const initState = {
   },
   typography: {
     fontFamily: 'Segoe UI',
-    fontWeight: 200,
-    fontSize: 13,
+    fontWeight: 400,
+    fontSize: 12,
     h3: {
       fontFamily: 'Segoe UI',
       fontWeight: 400,
-      fontSize: 30,
+      fontSize: 20,
     },
   },
   fullWidth: {
     maxWidth: 300,
   },
+
   props: {
     MuiButton: {
       color: 'primary',
-      disableRipple: true,
-      textTransform: 'none',
+      // disableRipple: true,
+      // textTransform: 'none',
     },
   },
   spacing: 5,

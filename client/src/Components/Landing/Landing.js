@@ -1,23 +1,17 @@
-import React from 'react';
-import {
-  Container,
-  Paper,
-  Typography,
-  makeStyles,
-  Divider,
-  useTheme,
-} from '@material-ui/core';
-
+import { React } from 'react';
+import { Container } from '@material-ui/core';
+import { useAuth0 } from '@auth0/auth0-react';
+import AuthenticatedLanding from './AuthenticatedLanding';
+import UnauthenticatedLanding from './UnauthenticatedLanding';
+import Info from './Info';
 const Landing = () => {
-  // const theme = useTheme();
-  // const classes = useStyles();
+  const { isAuthenticated } = useAuth0();
   return (
     <Container>
-      <Paper>
-        <Typography variant='h3'>Welcome to this page!</Typography>
-        <Typography paragraph={true}>Please sign in!</Typography>
-      </Paper>
+      {isAuthenticated ? <AuthenticatedLanding /> : <UnauthenticatedLanding />}
+      <Info />
     </Container>
   );
 };
+
 export default Landing;

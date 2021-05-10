@@ -28,7 +28,7 @@ const Profile = () => {
   const userDate = user.updated_at;
 
   const formatDate = new Date(userDate);
-  console.log(user);
+
   return (
     <Container className={classes.container}>
       <Typography className={classes.headline} variant='h3'>
