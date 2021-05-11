@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
+const sanitize = require('mongo-sanitize');
 const helseforetakModel = require('../Models/helseforetakModel');
-const fetchHelseforetak = async () => {
+async function fetchHelseforetak() {
   const baseUrl = process.env.URL_HELSEDIREKTORATET_BASE;
   const endpoint = process.env.HELSEDIREKTORATET_ENDPOINT_1;
   const url = baseUrl + endpoint;
@@ -11,7 +12,10 @@ const fetchHelseforetak = async () => {
   };
   const response = await fetch(url, options);
   const json = await response.json();
-  const update = new helseforetakModel(json);
-  await update.save();
-};
+  const clean = sanitize(json);
+  clean.forEach((obj) => {
+    let update = new helseforetakModel(obj);
+    update.save();
+  });
+}
 module.exports = fetchHelseforetak;

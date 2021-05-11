@@ -21,32 +21,34 @@ app.use(express.json());
 app.use(helmet());
 app.use(rateLimit);
 
-app.use(
-  jwt({
-    secret: jwks.expressJwtSecret({
-      cache: true,
-      rateLimit: true,
-      jwksRequestsPerMinute: 5,
-      jwksUri: `${process.env.JWKS_URI}`,
-    }),
-    audience: 'http://localhost:3001',
-    issuer: `${process.env.ISSUER}`,
-    algorithms: ['RS256'],
-  })
-);
+// app.use(
+//   jwt({
+//     secret: jwks.expressJwtSecret({
+//       cache: true,
+//       rateLimit: true,
+//       jwksRequestsPerMinute: 5,
+//       jwksUri: `${process.env.JWKS_URI}`,
+//     }),
+//     audience: 'http://localhost:3001',
+//     issuer: `${process.env.ISSUER}`,
+//     algorithms: ['RS256'],
+//   })
+// );
 
-app.use((err, req, res, next) => {
-  if (err) {
-    return res.status(err.status).json({
-      error: err.name,
-      message: err.message,
-      code: err.code,
-      status: err.status,
-    });
-  }
-  next();
-});
+// app.use((err, req, res, next) => {
+//   if (err) {
+//     return res.status(err.status).json({
+//       error: err.name,
+//       message: err.message,
+//       code: err.code,
+//       status: err.status,
+//     });
+//   }
+//   next();
+// });
 
+// const fetchHelseforetak = require('./Utils/fetchHelseforetak');
+// fetchHelseforetak();
 app.use('/api/v1/nasjonalt', nasjonaltRoute);
 
 app.use('/api/v1/helseregion', helseregionRoute);
