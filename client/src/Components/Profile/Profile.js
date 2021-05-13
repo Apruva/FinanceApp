@@ -62,7 +62,7 @@ const Profile = () => {
             <ListItem>
               <PersonOutlineOutlinedIcon />
               <ListItemText className={classes.text}>
-                Nickname: <strong>{user.nick}</strong>
+                Nickname: <strong>{user.nickname}</strong>
               </ListItemText>
             </ListItem>
             <ListItem>

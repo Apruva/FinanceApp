@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import queryReducer from './queryReducer';
 import themeReducer from './themeReducer';
-import tokenReducer from './tokenReducer';
+import apiReducer from './apiReducer';
+import userReducer from './userReducer';
 const rootReducer = combineReducers({
   themeReducer,
   queryReducer,
-  tokenReducer,
+  apiReducer,
+  userReducer,
 });
 
 export default rootReducer;
