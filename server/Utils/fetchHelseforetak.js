@@ -13,7 +13,7 @@ async function fetchHelseforetak() {
   const response = await fetch(url, options);
   const json = await response.json();
   const clean = sanitize(json);
-  clean.forEach((obj) => {
+  clean.forEach(function (obj) {
     let update = new helseforetakModel(obj);
     update.save();
   });

@@ -4,44 +4,49 @@ const sanitize = require('mongo-sanitize');
 const Joi = require('joi');
 const helseforetakModel = require('../Models/helseforetakModel');
 const HELSEFORETAK = require('../Constants/HELSEFORETAK');
-const customError = {
-  error: 'something went wrong',
-  validKeyValues: [...HELSEFORETAK],
-};
-router.get('/', async (req, res, next) => {
+const REGIONS = require('../Constants/REGIONS');
+
+const schema = Joi.object({
+  helseforetak: Joi.string().equal(...HELSEFORETAK),
+  region: Joi.string().equal(...REGIONS),
+  info: Joi.string().equal('info'),
+}).max(1);
+
+router.get('/', async (req, res) => {
   const clean = sanitize(req.query);
-  const helseforetak = sanitize(clean.helseforetak);
-  const region = sanitize(clean.region);
-  const help = sanitize(clean.help);
-  console.log(helseforetak, region, help);
-  if (helseforetak) {
-    console.log(helseforetak);
-    helseforetakModel.find(
-      { helseforetakNavn: { $eq: helseforetak } },
+  const { error, value } = schema.validate(clean);
+  if (error) return res.status(400).json(error);
+  const queryKey = Object.keys(value)[0];
+  const queryValue = Object.values(value)[0];
+
+  if (queryKey === 'helseforetak') {
+    await helseforetakModel.find(
+      { helseforetakNavn: { $eq: queryValue } },
       function (error, result) {
-        if (error) return res.json(customError);
-        return res.json(result);
+        if (error) return res.status(400).json(error);
+        return res.status(200).json(result);
       }
     );
-  } else if (region) {
-    helseforetakModel.find(
-      { region: { $eq: region } },
+  } else if (queryKey === 'region') {
+    await helseforetakModel.find(
+      { region: { $eq: queryValue } },
       function (error, result) {
-        if (error) return res.json(customError);
-        return res.json(result);
+        if (error) return res.status(400).json(error);
+        return res.status(200).json(result);
       }
     );
-  } else if (help) {
-    const avaliableHelseforetak = [...HELSEFORETAK];
-    return res.status(200).json({ helseforetak: avaliableHelseforetak });
+  } else if (queryKey === 'info') {
+    try {
+      res
+        .status(200)
+        .json({ helseforetak: [...HELSEFORETAK], region: [...REGIONS] });
+    } catch (e) {
+      res.status(400).json(e);
+    }
   } else {
-    helseforetakModel.find({}, function (error, result) {
-      if (error)
-        return res.json({
-          error:
-            'Something went from, apply the info key to get an overview of avaliable helseforetak',
-        });
-      return res.json(result);
+    await helseforetakModel.find({}, function (error, result) {
+      if (error) return res.status(400).json(error);
+      return res.status(200).json(result);
     });
   }
 });
